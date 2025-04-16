@@ -6,9 +6,9 @@ pipeline {
             steps {
                 sshagent(['ubuntu']) {
                     sh '''
-                    ssh -o StrictHostKeyChecking=no ubuntu@<public-ip> <<EOF
+                    ssh -o StrictHostKeyChecking=no ubuntu@34.207.245.13 <<EOF
 if [ ! -d "repo" ]; then
-    git clone <Repo-url> repo
+    git clone https://github.com/Sunni-rye/IC9Repo repo
 else
     echo "Repository already exists."
     cd repo
@@ -24,7 +24,7 @@ EOF
             steps {
                 sshagent(['ubuntu']) {
                     sh '''
-                    ssh -o StrictHostKeyChecking=no ubuntu@<public-ip> <<EOF
+                    ssh -o StrictHostKeyChecking=no ubuntu@34.207.245.13 <<EOF
 sudo apt update
 sudo apt install -y python3-flask
 sudo apt install -y python3-flask-cors
@@ -38,7 +38,7 @@ EOF
             steps {
                 sshagent(['ubuntu']) {
                     sh '''
-                    ssh -o StrictHostKeyChecking=no ubuntu@<public-ip> <<EOF
+                    ssh -o StrictHostKeyChecking=no ubuntu@34.207.245.13 <<EOF
 cd repo
 
 # Stop any running Flask app instance
